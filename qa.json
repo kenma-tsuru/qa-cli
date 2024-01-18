@@ -1,0 +1,23 @@
+[
+  {
+    "question": "What is the maximum number of IAM roles that can be attached to an AWS EC2 instance at a given time?",
+    "options": ["1", "5", "10", "15", "20"],
+    "answer": "20"
+  },
+  {
+    "question": "Which of the following AWS services can use AWS Identity and Access Management (IAM) roles for cross-account access?",
+    "options": [
+      "Amazon S3",
+      "Amazon RDS",
+      "Amazon Lambda",
+      "Amazon CloudFront",
+      "Amazon Route 53"
+    ],
+    "answer": "Amazon Lambda"
+  },
+  {
+    "question": "What is the maximum number of IAM groups that can be created within an AWS account?",
+    "options": ["10", "50", "100", "200", "500"],
+    "answer": "200"
+  }
+]
