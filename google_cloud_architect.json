@@ -1,0 +1,115 @@
+[
+    {
+        "question": "Cymbol Direct developers have written a new application. Based on initial usage estimates, you decide to run the application on Compute Engine instances with 15 Gb of RAM and 4 CPUs. These instances store persistent data locally. After the application runs for several months, historical data indicates that the application requires 30 Gb of RAM. Cymbal Direct management wants you to make adjustments that will minimize costs. What should you do?",
+        "options":[
+            "Stop the instance, and then use the command gcloud compute instances `set-machine-type VM_NAME --manchine-type es-standard-8`. Start the instance again",
+            "Stop the instance, and then use the command gcloud compute instances `set-machine-type VM_NAME --manchine-type es-standard-8`. Set the instance's metadata to: preemtible: true. Start the instance again",
+            "Stop the instance, and then use the command gcloud compute instances `set-machine-type VM_NAME --manchine-type 2-custom-4-30720`. Start the instance again",
+            "Stop the instance, and then use the command gcloud compute instances `set-machine-type VM_NAME --manchine-type 2-custom-4-30720`. Set the instance's metadata to: preemtible: true. Start the instance again"
+
+        ],
+        "answer": [2],
+        "description": "In this case, because the instances need to store persistent data locally, you can’t use preemptible machines, which eliminates B and D. Evaluating the two remaining choices, you know that an e2-standard-8 instance will have the appropriate amount of memory. However, this instance type will have more CPU than necessary and incur additional unnecessary costs. That leaves C as the correct answer. Custom instances are a good way to optimize costs because you don’t have to pay for resources you don’t need. Remember that the standard instance sizes are based on what makes sense for most general purpose applications, but your environment may differ."
+    },
+    {
+        "question":"You are creating a new project. You plan to set up a Dedicated interconnect between two of your data centers in the near future and want to ensure that your resources are only deployed to the same regions where your data centers are located. You need to make sure that you don't have any overlapping IP addresses that could cause conflicts when you set up the interconnect. You want to use RFC 1918 class B address space. What should you do?",
+        "options":[
+            "Create a new project, leave the default network in place, and then use the default 10.x.x.x network range to create subnets in your desired regions",
+            "Create a new project, delete the default VPC network, set up an auto mode VPC network, and then use the default 10.x.x.x network range to create subnets in your desired regions",
+            "Create a new project, delete the default VPC network, set up a custom mode VPC network, and then use IP addresses in the 172.16.x.x address range to create subnets in your desired regions",
+            "Create a new project, delete the default VPC network, set up a custom mode VPC network, and then use IP addresses in the 192.168.x.x address range to create subnets in your desired zones. Use VPC Network Peering to connect to zones in the same region to create regional networks"
+        ],
+        "answer":[2],
+        "description":"The first difference between the responses is whether you want to leave the default network in place or whether you delete the default VPC network and set up a new network that uses either auto mode or custom mode. Continuing to compare the responses, notice that you also need to decide on the network range to use to create subnets. You can eliminate A because default mode networks create subnets for you automatically in each zone and could allow people to accidentally provision resources in other regions. You can also eliminate B because auto mode networks also create subnets for you automatically in each zone. This leaves you with two options for setting up the network in custom mode. You can eliminate D because subnets are regional, not zonal. That leaves C as the correct answer. A custom mode VPC network does not automatically create subnets. This type of network provides you with complete control over its subnets and IP address ranges. You decide which subnets to create, in regions you choose, and which IP address ranges you use for subnets, but only if they fall within the RFC 1918 address space. RFC 1918 Class B uses the 172.16.x.x address space."
+    },
+    {
+        "question":"You are working in a mixed environment of VMs and Kubernetes. Some of your resources are on-premises, and some are in Google Cloud. Using containers as part of your CI/CD pipeline has sped up releases significantly. You want to start migrating some of those VMs to containers so you can get similar benefits. You want to automate the migration process where possible. What should you do?",
+        "options":[
+            "Manually create a GKE cluster, and then use Migrate for Antos to set up the cluster, import VMs, and convert them to containers",
+            "Use Migrate for Anthos to automate the creation of Compute Engine instances to import VMs and convert them to containers",
+            "Manually create a GKE cluster. Use Cloud Build to import VMs and convert them to containers",
+            "Use Migrate for Compute Engine to import VMs and convert them to containers"
+        ],
+        "answer":[0],
+        "description":"You can eliminate C because Cloud Build lets you build Docker-compatible containers, but you can’t use it to automate the importing of VMs. You can also eliminate D because you can't use Migrate for Compute Engine to create containers. Now that both your remaining options use Migrate to Containers (Migrate for Anthos), you need to make a choice based on how to use the product. Migrate to Containers (Migrate for Anthos) uses containers in GKE to migrate the VMs; It does not use Compute Engine instances. So, you can eliminate B. This leaves you with A as the correct answer."
+
+    },
+    {
+        "question":"Cymbal Direct drones continuously send data during deliveries. You need to process and analyze the incoming telemetery data. After processing, the data should be retained, but it will only be accessed once every month or two. Your CIO has issued a directive to incorporate managed services wherever possible. You want a cost-effective solution to process the incoming streams of data what should you do?",
+        "options":[
+            "Ingest data with ClearBlade IoT Core, and then publish to Pub/Sub. Use Dataflow to process the data, and store it in a Nearline Cloud Storage bucket.",
+            "Ingest data with ClearBlade IoT Core, process it with Dataprep, and store it in a Coldline Cloud Storage bucket.",
+            "Ingest data with ClearBlade IoT Core, and then publish to Pub/Sub. Use BigQuery to process the data, and store it in a Standard Cloud Storage bucket.",
+            "Ingest data with ClearBlade IoT Core, and then store it in BigQuery."
+        ],
+        "answer":[0],
+        "description":"options[1] is incorrect because Dataprep is used to normalize data before processing, if necessary. Coldline could be used, but Nearline is probably a better fit because the data could be accessed every month. Coldline has a higher cost for data access than Nearline, which makes it a poor choice for data accessed “every month or two. optiona[0] is correct. Dataflow is a fully managed service that can be used to process both streams and batches of data. Nearline is a good fit because the data could be accessed every month."
+    },
+    {
+        "question":"Cymbal Direct's employees will use Google Workspace. Your current on-premises network cannot meet the requirements to connect to Google's public infrastructure. What should you do?",
+        "options":[
+            "Connect the on-premises network to Google’s public infrastructure via a partner that supports Carrier Peering.",
+            "Connect the network to a Google point of presence, and enable Direct Peering.",
+            "Order a Dedicated Interconnect from a Google Cloud partner, and ensure that proper routes are configured.",
+            "Order a Partner Interconnect from a Google Cloud partner, and ensure that proper routes are configured."
+        ],
+        "answer":[0],
+        "description":"options[2] is incorrect because a Dedicated Interconnect connects a data center to your VPC. options[3] is incorrect. A Partner Interconnect allows access to your VPC network via a partner.This would allow access between on-premises and your internal IP addresses, which greatly exceeds the scope and does not follow the principle of least privilege."
+    },
+    {
+        "question":"You are working with a client who is using Google Kubernetes Engine (GKE) to migrate applications from a virtual machine–based environment to a microservices-based architecture. Your client has a complex legacy application that stores a significant amount of data on the file system of its VM. You do not want to re-write the application to use an external service to store the file system data. What should you do?",
+        "options":[
+            "In Cloud Shell, create a YAML file defining your Container called build.yaml. Create a Container in GKE by running the command gcloud builds submit –config build.yaml.",
+            "In Cloud Shell, create a YAML file defining your Deployment called deployment.yaml. Create a Deployment in GKE by running the command kubectl apply -f deployment.yaml",
+            "In Cloud Shell, create a YAML file defining your Pod called pod.yaml. Create a Pod in GKE by running the command kubectl apply -f pod.yaml",
+            "In Cloud Shell, create a YAML file defining your StatefulSet called statefulset.yaml. Create a StatefulSet in GKE by running the command kubectl apply -f statefulset.yaml"
+        ],
+        "answer": [3],
+        "description":"options[3] is correct because a StatefulSet represents a group of persistent Pods. The YAML file will define a PersistentVolumeClaim (PVC) that allows for an application to retain state. A StatefulSet is commonly used with applications like databases."
+    },
+    {
+        "question":"Cymbal Direct is evaluating database options to store the analytics data from its experimental drone deliveries. You're currently using a small cluster of MongoDB NoSQL database servers. You want to move to a managed NoSQL database service with consistent low latency that can scale throughput seamlessly and can handle the petabytes of data you expect after expanding to additional markets. What should you do?",
+        "options":[
+            "Extract the data from MongoDB. Insert the data into Firestore using Native mode.",
+            "Create a Bigtable instance, extract the data from MongoDB, and insert the data into Bigtable.",
+            "Extract the data from MongoDB, and insert the data into BigQuery.",
+            "Extract the data from MongoDB. Insert the data into Firestore using Datastore mode."
+        ],
+        "answer":[1],
+        "description":"options[3] is incorrect. Firestore does not meet the requirements for consistent low latency, scaling throughput seamlessly, and petabyte-scale."
+    },
+    {
+        "question":"Cymbal Direct is working with Cymbal Retail, a separate, autonomous division of Cymbal with different staff, networking teams, and data center. Cymbal Direct and Cymbal Retail are not in the same Google Cloud organization. Cymbal Retail needs access to Cymbal Direct’s web application for making bulk orders, but the application will not be available on the public internet. You want to ensure that Cymbal Retail has access to your application with low latency. You also want to avoid egress network charges if possible. What should you do?",
+        "options":[
+            "If Cymbal Retail does not have access to a Google Cloud data center, use Carrier Peering to connect the two networks.",
+            "Verify that the subnet range Cymbal Retail is using doesn’t overlap with Cymbal Direct’s subnet range, and then enable VPC Network Peering for the project.",
+            "Verify that the subnet Cymbal Retail is using has the same IP address range with Cymbal Direct’s subnet range, and then enable VPC Network Peering for the project.",
+            "Specify Cymbal Direct’s project as the Shared VPC host project, and then configure Cymbal Retail’s project as a service project."
+        ],
+        "answer":[1],
+        "description":"option[1] is correct! VPC Peering allows for shared networking between organizations."
+    },
+    {
+        "question":"Cymbal Direct has created a proof of concept for a social integration service that highlights images of its products from social media. The proof of concept is a monolithic application running on a single SuSE Linux virtual machine (VM). The current version requires increasing the VM’s CPU and RAM in order to scale. You would like to refactor the VM so that you can scale out instead of scaling up. What should you do?",
+        "options":[
+            "Make sure that the application declares any dependent requirements in a requirements.txt or equivalent statement so that they can be referenced in a startup script, and attach external persistent volumes to the VMs.",
+            "Make sure that the application declares any dependent requirements in a requirements.txt or equivalent statement so that they can be referenced in a startup script. Specify the startup script in a managed instance group template, and use an autoscaling policy.",
+            "Use containers instead of VMs, and use a GKE autoscaling deployment.",
+            "Move the existing codebase and VM provisioning scripts to git, and attach external persistent volumes to the VMs."
+        ],
+        "answer":[2],
+        "description":"option[1] is incorrect. Concurrency will help, but dependencies refer to declaring and isolating code dependencies. options[0] is incorrect. Backing services allow for flexibility in design, but not concurrency. Dependencies refer to declaring and isolating code dependencies."
+    },
+    {
+        "question":"Customers need to have a good experience when accessing your web application so they will continue to use your service. You want to define key performance indicators (KPIs) to establish a service level objective (SLO). Which KPI could you use?",
+        "options":[
+            "Eighty-five percent of requests succeed when aggregated over 1 minute",
+            "Eighty-five percent of customers are satisfied users",
+            "Eighty-five percent of requests are successful",
+            "Low latency for > 85% of requests when aggregated over 1 minute"
+        ],
+        "answer":[0],
+        "description":"option[2] is incorrect. Incorrect. This KPI is not bounded by time. You could have 100% success during one period of time and 75% during another, but the average (87.5) uptime would exceed the KPI."
+    }
+
+]
